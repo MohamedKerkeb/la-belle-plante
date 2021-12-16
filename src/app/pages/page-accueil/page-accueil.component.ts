@@ -1,33 +1,47 @@
 import { Component, OnInit } from '@angular/core';
+import { CallApiService } from 'src/app/services/call-api.service';
 
 import * as _ from 'underscore';
-import {list_products} from '../../data'
 
 @Component({
   selector: 'app-page-accueil',
   templateUrl: './page-accueil.component.html',
-  styleUrls: ['./page-accueil.component.scss']
+  styleUrls: ['./page-accueil.component.scss'],
 })
 export class PageAccueilComponent implements OnInit {
+  public categories: string[];
+  public list: object[];
 
-  categories: string[] = [];
-  listData = list_products
-
-  constructor() { }
-
-  ngOnInit(): void {
-  
-  this.categories =  _.pluck(list_products, 'product_breadcrumb_label')
-  // this.categories = [...new Set(this.categories)]
-  // this.categories = _.filter(this.categories, (item, index) => this.categories.indexOf(item) === index)
-  this.categories = _.uniq(this.categories);
-
-  //console.log(this.categories)
-
-  const listAllCategories = this.listData.map(product => product.product_breadcrumb_label);
-  const listUniqCategories = _.uniq(listAllCategories)
-  console.log(listUniqCategories)
-  
+  constructor(private listProduct: CallApiService) {
+    this.categories = [];
+    this.list = [];
   }
 
+  ngOnInit(): void {
+    this.getProducts();
+    // this.categories =  _.pluck(this.listProduct, 'product_breadcrumb_label')
+    // this.categories = [...new Set(this.categories)]
+    // this.categories = _.filter(this.categories, (item, index) => this.categories.indexOf(item) === index)
+    // this.categories = _.uniq(this.categories);
+
+    //  console.log(this.list)
+    // const listAllCategories = this.listData.map(product => product.product_breadcrumb_label);
+    // const listUniqCategories = _.uniq(listAllCategories)
+    // console.log(listUniqCategories)
+  }
+
+  getProducts() {
+    this.listProduct.getData().subscribe((product: any) => {
+      this.list = product;
+      // this.list.length = 20 // permet de limite le nombre d'appel à l'api 
+      console.log(this.list);
+      this.getCategories();
+    });
+  }
+
+  getCategories() {
+    this.categories = _.pluck(this.list, 'product_breadcrumb_label');
+    this.categories = _.uniq(this.categories);
+    //_.unique(product.map((el: any)  => el['product_breadcrumb_label']))
+  }
 }
