@@ -7,6 +7,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { PageAccueilComponent } from './pages/page-accueil/page-accueil.component';
 import { PageDetailsComponent } from './pages/page-details/page-details.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { FilterSideBarComponent } from './components/filter-side-bar/filter-side-bar.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     PageAccueilComponent,
     PageDetailsComponent,
     PageNotFoundComponent,
+    FilterSideBarComponent,
   ],
   imports: [
     BrowserModule,
