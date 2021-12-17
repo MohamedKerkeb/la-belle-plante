@@ -12,7 +12,7 @@ export class FilterSideBarComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.categories)
+    // console.log(this.categories)
   }
 
 }

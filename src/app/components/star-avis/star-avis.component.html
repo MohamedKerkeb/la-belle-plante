@@ -1,0 +1,15 @@
+<!-- <div>
+    <app-icon  [iconName]="'star'" [iconColor]="'gold'"></app-icon>
+    <app-icon [iconName]="'star'" [iconColor]="'gold'"></app-icon>
+    <app-icon [iconName]="'star'" [iconColor]="'gold'"></app-icon>
+    <app-icon [iconName]="'star'" [iconColor]="'gold'"></app-icon>
+    <app-icon [iconName]="'star'" [iconColor]="'gold'"></app-icon>
+</div> -->
+
+<div  (mouseleave)="onMouseLeave()">
+    <app-icon *ngFor="let star of starState;let index = index"
+                (mouseover)="mouse(index)"
+                [iconName]="star" 
+                [iconColor]="'#ffbf00'" 
+                [iconSize]="1.2"></app-icon>
+</div>

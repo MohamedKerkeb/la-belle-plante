@@ -10,7 +10,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { FilterSideBarComponent } from './components/filter-side-bar/filter-side-bar.component';
 import { CardPlanteComponent } from './components/card-plante/card-plante.component';
 import {HttpClientModule } from '@angular/common/http';
-import { IconComponent } from './components/icon/icon.component'
+import { IconComponent } from './components/icon/icon.component';
+import { StarAvisComponent } from './components/star-avis/star-avis.component'
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { IconComponent } from './components/icon/icon.component'
     FilterSideBarComponent,
     CardPlanteComponent,
     IconComponent,
+    StarAvisComponent,
   ],
   imports: [
     BrowserModule,

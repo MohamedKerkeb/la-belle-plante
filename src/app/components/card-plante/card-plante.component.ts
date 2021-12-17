@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-card-plante',
@@ -7,11 +7,17 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CardPlanteComponent implements OnInit {
   @Input() card: any;
+  @Output() clickLike= new EventEmitter();
   constructor() { 
     this.card;
   }
 
   ngOnInit(): void {
     // console.log('card', this.card)
+  }
+
+  onClickLike() {
+    //console.log('click')
+    this.clickLike.emit()
   }
 }
